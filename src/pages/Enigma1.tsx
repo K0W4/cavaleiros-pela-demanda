@@ -1,54 +1,7 @@
-import { useState } from 'react'
-import confetti from 'canvas-confetti'
+import { useEnigma } from '../hooks/useEnigma'
 
 export default function Enigma1() {
-  const [answer, setAnswer] = useState('')
-  const [isUnlocked, setIsUnlocked] = useState(false)
-  const [errorCount, setErrorCount] = useState(0)
-
-  const checkAnswer = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const normalizedAnswer = answer
-      .trim()
-      .toUpperCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-
-    if (normalizedAnswer === 'ACRE') {
-      setIsUnlocked(true)
-      triggerVictory()
-    } else {
-      setErrorCount(prev => prev + 1)
-    }
-  }
-
-  const triggerVictory = () => {
-    const duration = 3 * 1000
-    const end = Date.now() + duration
-
-    const frame = () => {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: ['#8a0303', '#c5a059'],
-      })
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: ['#8a0303', '#c5a059'],
-      })
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame)
-      }
-    }
-    frame()
-  }
+  const { answer, setAnswer, isUnlocked, errorCount, checkAnswer } = useEnigma('ACRE')
 
   return (
     <div className="min-h-screen bg-templar-stone flex flex-col items-center pt-32 pb-20 px-6">
@@ -66,7 +19,7 @@ export default function Enigma1() {
         <div className="w-full border-l-2 border-templar-red bg-black/20 p-6 italic text-templar-parchment/70 text-center text-sm sm:text-base mt-4 shadow-inner">
           <p>A chave para desvendar este segredo repousa na origem de tudo.
             <br />
-            Lembre-se de quantos cavaleiros juraram proteger os caminhos primeir, fundando a Ordem do Templo.</p>
+            Lembre-se de quantos cavaleiros juraram proteger os caminhos dos peregrinos, fundando a Ordem do Templo.</p>
         </div>
 
         <div className="w-full bg-black/40 border border-templar-gold/10 rounded-sm p-5 sm:p-8 shadow-2xl relative overflow-hidden">

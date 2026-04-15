@@ -1,54 +1,7 @@
-import { useState } from 'react'
-import confetti from 'canvas-confetti'
+import { useEnigma } from '../hooks/useEnigma'
 
 export default function Enigma3() {
-  const [answer, setAnswer] = useState('')
-  const [isUnlocked, setIsUnlocked] = useState(false)
-  const [errorCount, setErrorCount] = useState(0)
-
-  const checkAnswer = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const normalizedAnswer = answer
-      .trim()
-      .toUpperCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-
-    if (normalizedAnswer === 'TUNEL') {
-      setIsUnlocked(true)
-      triggerVictory()
-    } else {
-      setErrorCount(prev => prev + 1)
-    }
-  }
-
-  const triggerVictory = () => {
-    const duration = 3 * 1000
-    const end = Date.now() + duration
-
-    const frame = () => {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: ['#8a0303', '#c5a059'],
-      })
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: ['#8a0303', '#c5a059'],
-      })
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame)
-      }
-    }
-    frame()
-  }
+  const { answer, setAnswer, isUnlocked, errorCount, checkAnswer } = useEnigma('TUNEL')
 
   return (
     <div className="min-h-screen bg-templar-stone flex flex-col items-center pt-32 pb-20 px-6">
