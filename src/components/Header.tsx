@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+// import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
 interface Enigma {
@@ -43,7 +43,7 @@ function LockIcon() {
 }
 
 export default function Header() {
-  const now = useMemo(() => new Date(), [])
+  // const now = useMemo(() => new Date(), [])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-templar-gold/20 bg-templar-stone/90 backdrop-blur-md shadow-md">
