@@ -6,13 +6,20 @@ export default function Home() {
       aria-labelledby="hero-title"
     >
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none -z-20"
         style={{
           background:
             'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(138,3,3,0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 50% 100%, rgba(197,160,89,0.06) 0%, transparent 60%)',
         }}
         aria-hidden="true"
       />
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center -z-10 overflow-hidden">
+        <img
+          src="/logoCPD.png"
+          alt=""
+          className="w-full max-w-4xl h-auto object-contain opacity-[0.04] sm:opacity-[0.06] select-none"
+        />
+      </div>
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-8">
         <p className="font-medieval text-templar-gold text-xs tracking-[0.4em] uppercase mb-2 animate-pulse">

@@ -75,16 +75,20 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-templar-gold/20 bg-templar-stone/90 backdrop-blur-md shadow-md">
-      <nav className="w-full px-4 py-3 sm:px-8 sm:py-4 grid grid-cols-[1fr_auto_1fr] items-center gap-x-4">
+      <nav className="w-full px-2 py-3 sm:px-8 sm:py-4 grid grid-cols-[auto_1fr_auto] sm:grid-cols-[1fr_auto_1fr] items-center gap-x-2 sm:gap-x-4">
 
         <Link
           to="/"
-          className="font-medieval text-templar-gold text-[10px] sm:text-sm tracking-[0.2em] uppercase select-none justify-self-start hover:text-templar-parchment transition-colors duration-200"
+          className="justify-self-start"
         >
-          Cavaleiros Pela Demanda
+          <img
+            src="/logoCPD.png"
+            alt="Cavaleiros Pela Demanda"
+            className="h-14 sm:h-20 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md"
+          />
         </Link>
 
-        <ul className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 sm:gap-4">
+        <ul className="w-full flex flex-wrap justify-center items-center gap-x-2 gap-y-2 sm:gap-x-3 sm:gap-y-0">
           {ENIGMAS.map((enigma) => {
             const isUnlocked = currentTime ? currentTime >= enigma.releaseDate : false
 
@@ -120,7 +124,7 @@ export default function Header() {
           <img
             src="/logoDMRS.png"
             alt="Logo Grande Conselho DeMolay RS"
-            className="h-8 sm:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+            className="h-10 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
 

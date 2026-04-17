@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type SyntheticEvent } from 'react'
 import { triggerVictory } from '../utils/confetti'
 
 export function useEnigma(expectedAnswer: string, isEpic = false) {
@@ -6,7 +6,7 @@ export function useEnigma(expectedAnswer: string, isEpic = false) {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [errorCount, setErrorCount] = useState(0)
 
-  const checkAnswer = (e: React.FormEvent) => {
+  const checkAnswer = (e: SyntheticEvent | { preventDefault: () => void }) => {
     e.preventDefault()
 
     const normalizedAnswer = answer
