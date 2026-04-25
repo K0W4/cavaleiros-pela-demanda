@@ -15,7 +15,7 @@ export default function App() {
           <Route path="/enigma-1" element={<Enigma1 />} />
           <Route path="/enigma-2" element={<Enigma2 />} />
           <Route path="/enigma-3" element={<Enigma3 />} />
-          <Route path="/enigma-4" element={<Enigma4 />} />
+          <Route path="/enigma-4/:answer?" element={<Enigma4 />} />
         </Route>
       </Routes>
     </BrowserRouter>
